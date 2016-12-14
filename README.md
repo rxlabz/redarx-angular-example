@@ -125,6 +125,29 @@ class AddTodoCommand extends Command<TodoModel> {
 The Store provides a stream of immutables state$. The App Component listen to injected store state$ stream,
  and injected updated values in the children components. 
 
+```dart
+class AppComponent {
+  TodoModel state;
+
+  Function dispatch;
+
+  AppComponent(CommanderService commander, @Inject(DISPATCH) this.dispatch,
+      @Inject(DEFAULT_STORE) Store<Command<TodoModel>, TodoModel> store) {
+    store.state$.listen((TodoModel newState) {
+      state = newState;
+    } );
+    loadAll();
+  }
+
+  loadAll() {
+    dispatch(new Request(RequestType.LOAD_ALL));
+  }
+  update(Todo todo) {
+    dispatch(new Request(RequestType.UPDATE_TODO, withData: todo));
+  }
+}
+```
+
 ## Immutable State Model
 
 Each app must define its state [model](https://github.com/rxlabz/redarx-angular-example/blob/master/lib/state/model.dart) class, which must extends AbstracModel.

@@ -20,29 +20,23 @@ import 'package:redarx_ng_example/state/model.dart';
       CommanderService
     ],
     directives: const [TodoForm, TodoFooter, TodoItem])
-class AppComponent extends OnInit {
+class AppComponent {
   TodoModel state;
-  List<Todo> todos;
 
   Function dispatch;
 
   AppComponent(CommanderService commander, @Inject(DISPATCH) this.dispatch,
       @Inject(DEFAULT_STORE) Store<Command<TodoModel>, TodoModel> store) {
-    store.state$.listen((TodoModel v) {
-      state = v;
-      todos = v.todos;
+    store.state$.listen((TodoModel newState) {
+      state = newState;
     } );
     loadAll();
   }
-
-  @override
-  ngOnInit() {}
 
   loadAll() {
     dispatch(new Request(RequestType.LOAD_ALL));
   }
   update(Todo todo) {
-    print('AppComponent.update  todo ${todo}');
     dispatch(new Request(RequestType.UPDATE_TODO, withData: todo));
   }
 }

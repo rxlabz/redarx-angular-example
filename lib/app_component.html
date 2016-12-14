@@ -1,8 +1,8 @@
 <todo-form> </todo-form>
 <ul>
-    <todo-item *ngFor="let t of todos"
-               [todo]="t"
-    (onUpdate)="update($event)"
+    <todo-item *ngFor="let todo of state?.todos"
+               [todo]="todo"
+               (onUpdate)="update($event)"
     ></todo-item>
 </ul>
 <todo-footer
