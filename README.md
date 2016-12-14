@@ -111,7 +111,8 @@ class AddTodoCommand extends Command<TodoModel> {
   AddTodoCommand(this.todo);
 
   @override
-  TodoModel exec(TodoModel model) => model..items.add(todo);
+  TodoModel exec(TodoModel model) =>
+      new TodoModel(model.items..add(todo), model.showCompleted);
 
   static CommandBuilder constructor() {
     return (Todo todo) => new AddTodoCommand(todo);
