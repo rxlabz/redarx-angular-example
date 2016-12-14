@@ -153,26 +153,29 @@ class AppComponent {
 Each app must define its state [model](https://github.com/rxlabz/redarx-angular-example/blob/master/lib/state/model.dart) class, which must extends AbstracModel.
 Abstract Model has a const contructor so the state instances are const.
 
+In this example, we use [built_collection package](https://pub.dartlang.org/packages/built_collection) which provide some immutable data structures.
+Here, items are stored in a BuildList.
+
 ```dart
 class TodoModel extends AbstractModel{
 
   const TodoModel(this.items, this.showCompleted);
 
-  final List<Todo> items;
+  final BuiltList<Todo> items;
 
   final bool showCompleted;
 
-  List<Todo> get todos =>
-      items.where((t) => showCompleted ? t.completed : !t.completed).toList();
+  BuiltList<Todo> get todos =>
+      new BuiltList<Todo>(items.where((Todo t) => showCompleted ? t.completed : !t.completed));
 
   int get numCompleted => items.where((t)=>t.completed).length;
 
   int get numRemaining => items.where((t)=>!t.completed).length;
 
-  const TodoModel.empty():items = const[], showCompleted = false;
+  TodoModel.empty():items = new BuiltList<Todo>(), showCompleted = false;
 
   @override
-  AbstractModel initial() => const TodoModel.empty();
+  AbstractModel initial() => new TodoModel.empty();
 
   @override
   String toString() {
@@ -185,3 +188,17 @@ TodoModel{
   }
 }
 ```
+
+### BuildList
+
+A [buildList](https://www.dartdocs.org/documentation/built_collection/1.0.6/built_collection/BuiltList-class.html) instance is immutable, but gives you access to a builder to update value, and rebuild a new updated instance.
+
+```dart
+
+var list = BuildList([1,2,3]);
+var newList = list.rebuild((b)=>b.add(4));
+
+
+```
+
+- Learn more about [built_collection](https://medium.com/@davidmorgan_14314/darts-built-collection-for-immutable-collections-db662f705eff#.bxp1wei28) 
