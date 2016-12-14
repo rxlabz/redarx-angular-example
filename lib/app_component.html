@@ -1,0 +1,9 @@
+<todo-form> </todo-form>
+<ul>
+    <li *ngFor="let t of todos">{{t.label}}</li>
+</ul>
+<todo-footer
+        [numRemaining]="state?.numRemaining"
+        [numCompleted]="state?.numCompleted"
+></todo-footer>
+        <!--[showCompleted]="model ? model.showCompleted : false"-->
