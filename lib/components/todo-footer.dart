@@ -22,4 +22,11 @@ class TodoFooter{
   completeAll(){
     dispatch(new Request(RequestType.COMPLETE_ALL));
   }
+  clear(){
+    dispatch(new Request(RequestType.CLEAR_ARCHIVES));
+  }
+
+  toggleShowMode(){
+    dispatch(new Request(RequestType.TOGGLE_SHOW_COMPLETED));
+  }
 }

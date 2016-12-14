@@ -1,0 +1,8 @@
+<li>
+    <label >
+    <input #check id="{{'fld${todo.uid}'}}" type="checkbox"
+        (change)="complete(check.checked)" [checked]="todo.completed == true"
+    />
+        {{todo.label}}
+    </label>
+</li>

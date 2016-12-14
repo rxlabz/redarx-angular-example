@@ -3,6 +3,7 @@ import 'package:redarx/redarx.dart';
 import 'package:redarx_ng_example/commander-service.dart';
 import 'package:redarx_ng_example/components/todo-footer.dart';
 import 'package:redarx_ng_example/components/todo-form/todo-form.dart';
+import 'package:redarx_ng_example/components/todo-item.dart';
 import 'package:redarx_ng_example/config.dart';
 import 'package:redarx_ng_example/state/commands.dart';
 import 'package:redarx_ng_example/state/model.dart';
@@ -18,7 +19,7 @@ import 'package:redarx_ng_example/state/model.dart';
       const Provider(REQUEST$, useFactory: request$Factory),
       CommanderService
     ],
-    directives: const [TodoForm, TodoFooter])
+    directives: const [TodoForm, TodoFooter, TodoItem])
 class AppComponent extends OnInit {
   TodoModel state;
   List<Todo> todos;
@@ -39,5 +40,9 @@ class AppComponent extends OnInit {
 
   loadAll() {
     dispatch(new Request(RequestType.LOAD_ALL));
+  }
+  update(Todo todo) {
+    print('AppComponent.update  todo ${todo}');
+    dispatch(new Request(RequestType.UPDATE_TODO, withData: todo));
   }
 }
