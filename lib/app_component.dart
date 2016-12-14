@@ -2,7 +2,7 @@ import 'package:angular2/core.dart';
 import 'package:redarx/redarx.dart';
 import 'package:redarx_ng_example/commander-service.dart';
 import 'package:redarx_ng_example/components/todo-footer.dart';
-import 'package:redarx_ng_example/components/todo-form/todo-form.dart';
+import 'package:redarx_ng_example/components/todo-form.dart';
 import 'package:redarx_ng_example/components/todo-item.dart';
 import 'package:redarx_ng_example/config.dart';
 import 'package:redarx_ng_example/state/commands.dart';
