@@ -1,6 +1,6 @@
 # Redarx with Angular Dart
 
-Redarx is a Dart State management inspired by ngrx<=Redux<=Elm and Parsley (Apache Flex framework).
+[Redarx](https://github.com/rxlabz/redarx) is a Dart State management inspired by ngrx<=Redux<=Elm and Parsley (Apache Flex framework).
 
 It is based on a **stream of immutable states "reduced" with a Request-Commands map**.
   
@@ -9,7 +9,7 @@ to transform the command$ stream to a stream of state$ => UI is updated with the
 
 ## Config : config.dart
 
-The config.dart file defines :
+The [config.dart](https://github.com/rxlabz/redarx-angular-example/blob/master/lib/config.dart) file defines :
 
 - the Requests/Commands map
 - injected token factory
@@ -99,7 +99,7 @@ class CommanderService {
 
 ## Commands
 
-Commands are simple classes with an exec method.
+[Commands](https://github.com/rxlabz/redarx-angular-example/blob/master/lib/state/commands.dart) are simple classes with an exec method.
 
 The `exec()` method create an update instance of the state model and return it.
  
@@ -126,7 +126,7 @@ The Store provides a stream of immutables state$. The App Component listen to in
 
 ## Immutable State Model
 
-Each app must define its state model class, which must extends AbstracModel.
+Each app must define its state [model](https://github.com/rxlabz/redarx-angular-example/blob/master/lib/state/model.dart) class, which must extends AbstracModel.
 Abstract Model has a const contructor so the state instances are const.
 
 ```dart
