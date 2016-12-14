@@ -24,7 +24,7 @@ CommanderConfig<RequestType> configFactory() {
 
 const DEFAULT_STORE = const OpaqueToken('redarx.store.default');
 Store<Command<TodoModel>, TodoModel> storeFactory() =>
-    new Store<Command<TodoModel>, TodoModel>(() => const TodoModel.empty());
+    new Store<Command<TodoModel>, TodoModel>(() => new TodoModel.empty());
 
 
 /// dispatcher unique  - pseu

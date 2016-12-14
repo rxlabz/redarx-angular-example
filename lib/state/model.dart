@@ -1,24 +1,25 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:redarx/redarx.dart';
 
 class TodoModel extends AbstractModel{
 
   const TodoModel(this.items, this.showCompleted);
 
-  final List<Todo> items;
+  final BuiltList<Todo> items;
 
   final bool showCompleted;
 
-  List<Todo> get todos =>
-      items.where((t) => showCompleted ? t.completed : !t.completed).toList();
+  BuiltList<Todo> get todos =>
+      new BuiltList<Todo>(items.where((Todo t) => showCompleted ? t.completed : !t.completed));
 
   int get numCompleted => items.where((t)=>t.completed).length;
 
   int get numRemaining => items.where((t)=>!t.completed).length;
 
-  const TodoModel.empty():items = const[], showCompleted = false;
+  TodoModel.empty():items = new BuiltList<Todo>(), showCompleted = false;
 
   @override
-  AbstractModel initial() => const TodoModel.empty();
+  AbstractModel initial() => new TodoModel.empty();
 
   @override
   String toString() {
